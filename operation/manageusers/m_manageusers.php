@@ -2,7 +2,7 @@
 
 class ManageUsersModel
 {
-    public function getTask()
+    public function getUsers()
     {
         // $where ="sro_id = $sro_id";
        
@@ -20,6 +20,25 @@ class ManageUsersModel
         $data = $con->select( $sql );
         return $data;
 
+    }
+
+    public function consultUser($sro_id)
+    {
+         $where ="sro_id = $sro_id";
+       
+         $con = new Conexion();
+         $sql = "SELECT 
+                 sro_id, 
+                 sro_nombre,
+                 sro_password, 
+                 sro_user, 
+                 sro_email, 
+                 rol_nombre, 
+                 sro_fechacreacion  
+             FROM usuarios u 
+             INNER JOIN rol r ON u.rol_id = r.rol_id WHERE $where ";
+         $data = $con->select( $sql );
+         return $data;
     }
 
 

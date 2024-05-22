@@ -1,8 +1,13 @@
 <?php
 include_once 'c_manageusers.php';
 $controller = new ManageUsersController();
-$users = $controller->getUser();
-echo 'MI SESION: '. $_SESSION["user"];
+$rol = $_SESSION['rol'];
+$id = $_SESSION['user'];
+if ($rol == 1) {
+  $users = $controller->getUser();
+}else{
+  $users = $controller->getUserById($id);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +82,9 @@ echo 'MI SESION: '. $_SESSION["user"];
             <td>
               <button type="button" class="btn btn-info btn-sm btnm" data-toggle="modal" data-target="#editModal"><i class="fa-regular fa-pen-to-square"></i></button>
               <!-- <button type="button" class="btn btn-danger btn-sm">Eliminar</button> -->
-              <a href="#"  class="btn btn-light btn-sm" onclick="confirmarDelete('<?php echo $user['sro_id']; ?>')"><i class="fa-regular fa-trash-can"></i></a>
+              <?php if($rol == 1): ?>
+                <a href="#"  class="btn btn-light btn-sm" onclick="confirmarDelete('<?php echo $user['sro_id']; ?>')"><i class="fa-regular fa-trash-can"></i></a>
+              <?php endif; ?>
             </td>
           </tr>
 
@@ -85,7 +92,9 @@ echo 'MI SESION: '. $_SESSION["user"];
 <?php endforeach; ?>
 </tbody>
 </table>
-<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addModal">Agregar</button>
+<?php if($rol == 1): ?>
+  <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addModal">Agregar</button>
+<?php endif; ?>
 </div>
 
 
@@ -113,12 +122,13 @@ echo 'MI SESION: '. $_SESSION["user"];
 
             <label for="email">Email:</label>
             <input type="email" class="form-control" id="email2" name="email" required>
-
+            
             <label for="rol">Rol:</label>
             <select class="form-select" name="rol" required aria-label="Default select example">
               <option value=1>ADMIN</option>
               <option value=2>PASAJERO</option>
             </select>
+           
           </div>
           <button type="submit" class="btn btn-primary">Agregar</button>
         </form>
@@ -152,11 +162,13 @@ echo 'MI SESION: '. $_SESSION["user"];
             <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" name="email" required>
 
-            <label for="rol" class="form-label">Rol:</label>
-            <select class="form-select" name="rol" required aria-label="Default select example">
-              <option value=1>ADMIN</option>
-              <option value=2>PASAJERO</option>
-            </select>
+            <?php if($rol == 1): ?>
+                <label for="rol">Rol:</label>
+                <select class="form-select" name="rol" required aria-label="Default select example">
+                  <option value=1>ADMIN</option>
+                  <option value=2>PASAJERO</option>
+                </select>
+            <?php endif; ?>
 
             <input type="hidden" id="id" name="id" value ="{id}">
           </div>

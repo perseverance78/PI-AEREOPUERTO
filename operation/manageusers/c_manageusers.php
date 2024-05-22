@@ -13,9 +13,16 @@ class ManageUsersController
     {
        
         $model = new ManageUsersModel();
-        $data =$model->getTask();
+        $data =$model->getUsers();
         return $data;
 
+    }
+
+    public function getUserById($id)
+    {
+        $model = new ManageUsersModel();
+        $data =$model->consultUser($id);
+        return $data;
     }
 
 
@@ -47,12 +54,17 @@ class ManageUsersController
 
     public function modifyUser()
     {
+        session_start();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['name'];
             $password = $_POST['pass'];
             $user = $_POST['user'];
             $email = $_POST['email'];
-            $rol = $_POST['rol'];
+            if ($_SESSION['rol' == 1]) {
+                $rol = $_POST['rol'];
+            }else{
+                $rol = 2;
+            }
             $id = $_POST['id'];
 
             $data = array(

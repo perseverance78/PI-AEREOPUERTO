@@ -54,12 +54,8 @@
     
       switch ($page) {
         case 'user':
-            if ($rol == 1) {
               include '../manageusers/manageusers.tpl.php';
-            } 
-            else{
-             echo "<div class='container-fluid full-screen'><h4 class='centered-heading'>NO TIENES ACCESO A ESTA PAGINA</h4></div>";
-            }
+          
           break;
         case 'flight':
           if ($rol == 1) {
