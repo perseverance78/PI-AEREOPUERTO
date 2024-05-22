@@ -52,7 +52,7 @@ $reserves = $controller->getReserve();
     <h2>Gestionar reservas</h2>
     <hr>
     
-    <table id="grid" class="table  table-bordered table-success" style="width:100%">
+    <table id="grid" class="table  table-bordered table-light" style="width:100%">
       <thead >
         <tr>
           <th>ID</th>

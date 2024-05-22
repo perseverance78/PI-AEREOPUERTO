@@ -68,6 +68,24 @@ class SearchFlightModel
 
     }
 
+    public function filterFlight($where)
+    {
+       
+        $con = new Conexion();
+        $sql = "SELECT 
+            vlso_id,
+            vlso_fecha, 
+            vlso_hora,
+            vlso_piloto, 
+            vlso_avion,
+            vlso_origen,
+            vlso_destino
+        FROM vuelos $where;";
+        $data = $con->select( $sql );
+        return $data;
+
+    }
+
 
 
 }

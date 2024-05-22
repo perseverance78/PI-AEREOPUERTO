@@ -49,5 +49,45 @@ class SearchFlightController
 
     }
 
+    public function searchFlight()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $where = "WHERE ";
+            if (isset($_POST['fechaDesde']) && isset($_POST['fechaHasta']) && isset($_POST['origen'])  && isset($_POST['destino']) ) {
+                $fechaDesde = $_POST['fechaDesde'];
+                $fechaHasta = $_POST['fechaHasta'];
+                $origen = $_POST['origen'];
+                $destino = $_POST['destino'];
+                $where.= "vlso_fecha >= $fechaDesde 
+                AND vlso_fecha <= $fechaHasta
+                AND vlso_origen = $origen
+                AND vlso_destino = $destino";
+            }
+
+            if (isset($_POST['fechaDesde']) && isset($_POST['fechaHasta']) && !isset($_POST['origen'])  && isset($_POST['destino']) ) {
+                $fechaDesde = $_POST['fechaDesde'];
+                $fechaHasta = $_POST['fechaHasta'];
+                $destino = $_POST['destino'];
+                $where.= "vlso_fecha >= $fechaDesde 
+                AND vlso_fecha <= $fechaHasta
+                AND vlso_destino = $destino";
+            }
+
+            if (isset($_POST['fechaDesde']) && isset($_POST['fechaHasta']) && isset($_POST['origen'])  && !isset($_POST['destino']) ) {
+                $fechaDesde = $_POST['fechaDesde'];
+                $fechaHasta = $_POST['fechaHasta'];
+                $origen = $_POST['origen'];
+                $where.= "vlso_fecha >= $fechaDesde 
+                AND vlso_fecha <= $fechaHasta
+                AND vlso_origen = $origen";
+            }
+
+            $model = new SearchFlightModel();
+            $model-> filterFlight($where);
+
+           
+        }
+    }
+
     
 }

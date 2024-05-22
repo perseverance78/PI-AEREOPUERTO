@@ -9,5 +9,7 @@ switch ($_REQUEST['modo']) {
     case 'createReserve':
         $searchFlight->createReserve();
         break;
+    case 'searchFlight':
+        $searchFlight->searchFlight();
     
 }

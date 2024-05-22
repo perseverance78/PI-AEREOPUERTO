@@ -5,7 +5,7 @@ class ManagePlaneModel
 
     public function consultPlane()
     {
-        // $where ="sro_id = $sro_id";
+   
        
         $con = new Conexion();
         $sql = "SELECT 
@@ -68,25 +68,27 @@ class ManagePlaneModel
 
     public function updatePlane($data)
     {
-        $vlso_id = $data['vlso_id'];
-        $vlso_fecha = $data['vlso_fecha'];
-        $vlso_hora = $data['vlso_hora'];
-        $vlso_piloto = $data['vlso_piloto'];
-        $vlso_avion = $data['vlso_avion'];
-        $vlso_origen = $data['vlso_origen'];
-        $vlso_destino = $data['vlso_destino'];
+        $vno_id = $data['vno_id'];
+        $vno_numeroserie = $data['vno_numeroserie'];
+        $vno_modelo = $data['vno_modelo'];
+        $vno_ayofabricacion = $data['vno_ayofabricacion'];
+        $rlna_id = $data['rlna_id'];
+        $vno_codigo = $data['vno_codigo'];
+        $vno_capacidadpasajeros = $data['vno_capacidadpasajeros'];
+        $vno_capacidadpeso = $data['vno_capacidadpeso'];
+       
         
         
         $con = new Conexion();
-        $sql = "UPDATE vuelos 
-                    SET 
-                    vlso_fecha = '$vlso_fecha',
-                    vlso_hora = '$vlso_hora',
-                    vlso_piloto = '$vlso_piloto',
-                    vlso_avion = '$vlso_avion',
-                    vlso_origen = '$vlso_origen',
-                    vlso_destino = '$vlso_destino'
-                WHERE vlso_id = $vlso_id";
+        $sql = "UPDATE avion SET 
+                    vno_numeroserie = '$vno_numeroserie',
+                    vno_modelo = '$vno_modelo',
+                    vno_ayofabricacion = '$vno_ayofabricacion',
+                    rlna_id = '$rlna_id',
+                    vno_codigo = '$vno_codigo',
+                    vno_capacidadpasajeros = $vno_capacidadpasajeros,
+                    vno_capacidadpeso = '$vno_capacidadpeso'
+                WHERE vno_id = $vno_id";
 
         $result = $con->update($sql);
 

@@ -60,21 +60,23 @@ class ManagePlaneController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             $id = $_POST['id'];
-            $date = $_POST['date'];
-            $hour = $_POST['hour'];
-            $pilot = $_POST['pilot'];
-            $plane = $_POST['plane'];
-            $origin = $_POST['origin'];
-            $destination = $_POST['destination'];
+            $serie = $_POST['serie'];
+            $model = $_POST['model'];
+            $year = $_POST['year'];
+            $airline = $_POST['airline'];
+            $code = $_POST['code'];
+            $passengers = $_POST['passengers'];
+            $capacity = $_POST['capacity'];
 
             $data = array(
-                'vlso_id' => $id,
-                'vlso_fecha' => $date,
-                'vlso_hora' => $hour,
-                'vlso_piloto' => $pilot,
-                'vlso_avion' => $plane,
-                'vlso_origen' => $origin,
-                'vlso_destino' => $destination
+                'vno_id' => $id,
+                'vno_numeroserie' => $serie,
+                'vno_modelo' => $model,
+                'vno_ayofabricacion' => $year,
+                'rlna_id' => $airline,
+                'vno_codigo' => $code,
+                'vno_capacidadpasajeros' => $passengers,
+                'vno_capacidadpeso' => $capacity,
             );
 
             $model = new ManagePlaneModel();

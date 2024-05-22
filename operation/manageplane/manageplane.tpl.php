@@ -50,7 +50,7 @@ $planes = $controller->getPlane();
   <div class="container-fluid mt-5">
     <h2>Gestionar aviones</h2>
     <hr>
-    <table id="grid" class="table table-striped table-bordered table-success" style="width:100%">
+    <table id="grid" class="table table-striped table-bordered table-light" style="width:100%">
       <thead>
         <tr>
           <th>ID</th>
@@ -106,25 +106,25 @@ $planes = $controller->getPlane();
         <form action="../manageplane/manageplane.php?modo=createPlane" method="post" >
           <div class="form-group">
             <label for="serie">Serie:</label>
-            <input type="text" class="form-control" id="serie2" name="serie" required>
+            <input type="text" class="form-control" id="serie" name="serie" required>
 
             <label for="model">Modelo:</label>
-            <input type="text" class="form-control" id="model2" name="model" required>
+            <input type="text" class="form-control" id="model" name="model" required>
 
             <label for="year">Año de Fabricacion:</label>
-            <input type="date" class="form-control" id="year2" name="year" required>
+            <input type="date" class="form-control" id="year" name="year" required>
 
             <label for="airline">Aerolinea:</label>
-            <input type="text" class="form-control" id="airline2" name="airline" required>
+            <input type="text" class="form-control" id="airline" name="airline" required>
 
             <label for="code">Codigo:</label>
-            <input type="text" class="form-control" id="code2" name="code" required>
+            <input type="text" class="form-control" id="code" name="code" required>
 
             <label for="passengers">Cantidad pasajeros:</label>
-            <input type="text" class="form-control" id="passengers2" name="passengers" required>
+            <input type="text" class="form-control" id="passengers" name="passengers" required>
 
             <label for="capacity">Capacidad(Kg):</label>
-            <input type="text" class="form-control" id="capacity2" name="capacity" required>
+            <input type="text" class="form-control" id="capacity" name="capacity" required>
             
           </div>
           <button type="submit" class="btn btn-primary">Agregar</button>
@@ -168,7 +168,7 @@ $planes = $controller->getPlane();
             <label for="capacity">Capacidad(Kg):</label>
             <input type="text" class="form-control" id="capacity2" name="capacity" required>
 
-            <input type="hidden" name="id">
+            <input type="hidden" id="id" name="id">
             
           </div>
           <button type="submit" class="btn btn-primary">Guardar Cambios</button>
@@ -211,15 +211,18 @@ $planes = $controller->getPlane();
       var dato5 = fila.find('td:eq(4)').text(); // Obtener el quinto dato de la fila
       var dato6 = fila.find('td:eq(5)').text(); // Obtener el sexto dato de la fila
       var dato7 = fila.find('td:eq(6)').text(); // Obtener el septimo dato de la fila
+      var dato8 = fila.find('td:eq(7)').text(); // Obtener el septimo dato de la fila
      
       // Actualizar los campos del modal con los datos obtenidos
       $('#id').val(dato1);
-      $('#fecha').val(dato2);
-      $('#hora').val(dato3);
-      $('#piloto').val(dato4);
-      $('#avion').val(dato5);
-      $('#origen').val(dato6);
-      $('#destino').val(dato7);
+      $('#serie2').val(dato2)
+      $('#model2').val(dato3)
+      $('#year2').val(dato4)
+      $('#airline2').val(dato5)
+      $('#code2').val(dato6)
+      $('#passengers2').val(dato7)
+      $('#capacity2').val(dato8)
+
     });
 
   });
