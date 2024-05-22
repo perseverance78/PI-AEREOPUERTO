@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login y Registro</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Estilos personalizados -->
+  <style>
+    body {
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://e0.pxfuel.com/wallpapers/822/81/desktop-wallpaper-airport-lights-airport-night.jpg'); 
+      background-size: cover;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin-left: 55%; /* Mueve el formulario hacia la derecha de la página */
+    }
+    .form-container {
+      max-width: 400px;
+      margin: 80px auto;
+      background-color: #333;
+      padding: 80px 60px; /* Aumento del padding vertical */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(99, 96, 96, 0.5);
+      display: flex; /* Utiliza flexbox */
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://static.vecteezy.com/system/resources/previews/002/565/818/original/passenger-airplane-on-a-black-background-illustration-vector.jpg');
+      
+      flex-direction: column; /* Alinea los elementos verticalmente */
+      justify-content: center; /* Centra verticalmente los elementos */
+    }
+    .form-container .btn-toggle {
+      margin-bottom: 20px;
+    }
+    .form-container .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-container form {
+      margin-bottom: 1.5rem;
+    }
+    .form-container h2 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .form-container .btn-toggle {
+      border: none;
+      background-color: transparent;
+      color: #fff;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .form-container .btn-toggle:hover {
+      color: #17a2b8;
+    }
+    .form-container .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .form-container .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+    .form-container .btn-success {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    .form-container .btn-success:hover {
+      background-color: #218838;
+      border-color: #218838;
+    }
+    .form-container input[type="text"],
+    .form-container input[type="password"],
+    .form-container input[type="email"] {
+      border: none;
+      border-bottom: 1px solid #ccc;
+      background-color: transparent;
+      color: #fff;
+      transition: border-color 0.3s;
+    }
+    .form-container input[type="text"]:focus,
+    .form-container input[type="password"]:focus,
+    .form-container input[type="email"]:focus
+     {
+        outline:none !important;
+        outline-width: 0 !important;
+        box-shadow: none;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+    
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="form-container">
+    <!-- <button id="toggleBtn" class="btn btn-toggle" onclick="toggleForm()">Registrarse</button> -->
+    <div id="loginForm">
+      <h2>Iniciar sesión</h2>
+      <form action="./login/login.php?modo=login" method="post">
+        <div class="form-group">
+          <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" name="user" required>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="password" placeholder="Contraseña" name="clave" required>
+        </div>
+        <button type="submit" class="btn btn-light btn-block mb-5">Iniciar sesión</button>
+        <span>¿No tienes cuenta?<a href="register/register.php?modo=register">Registrarse</a></span>
+      </form>
+
+     
+    </div>
+    
+    <!-- <div id="registerForm" style="display: none;">
+      <h2>Registrarse</h2>
+      <form>
+        <div class="form-group">
+          <input type="text" class="form-control" id="newUsername" placeholder="Nuevo nombre de usuario" required>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="newPassword" placeholder="Nueva contraseña" required>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" id="newEmail" placeholder="Email" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+      </form>
+    </div> -->
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Script personalizado -->
+<script>
+  function toggleForm() {
+    var loginForm = document.getElementById("loginForm");
+    var registerForm = document.getElementById("registerForm");
+    var toggleBtn = document.getElementById("toggleBtn");
+    
+    if (loginForm.style.display === "none") {
+      loginForm.style.display = "block";
+      registerForm.style.display = "none";
+      toggleBtn.textContent = "Registrarse";
+    } else {
+      loginForm.style.display = "none";
+      registerForm.style.display = "block";
+      toggleBtn.textContent = "Iniciar sesión";
+    }
+  }
+</script>
+
+</body>
+</html>
